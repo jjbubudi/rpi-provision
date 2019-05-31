@@ -1,0 +1,12 @@
+---
+- name: Mount USB drive
+  mount:
+    path: /mnt/drive
+    src: /dev/sda1
+    fstype: ext4
+    opts: nofail,x-systemd.device-timeout=1,noatime
+    state: mounted
+- name: Create directory for local-path-provisioner
+  file:
+    path: /mnt/drive/pv
+    state: directory

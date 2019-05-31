@@ -1,0 +1,18 @@
+---
+- name: Create brick path
+  file:
+    path: /data/bricks
+    state: directory
+- name: Create gluster volume
+  gluster_volume:
+    state: present
+    name: shared
+    bricks: /data/bricks/shared
+    force: yes
+    arbiters: 1
+    replicas: 3
+    cluster:
+      - glusterfs-0
+      - glusterfs-1
+      - glusterfs-2
+  run_once: true
