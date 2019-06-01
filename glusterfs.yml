@@ -1,0 +1,5 @@
+---
+- hosts: glusterfs
+  gather_facts: yes
+  roles:
+    - { role: glusterfs }
