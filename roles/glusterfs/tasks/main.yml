@@ -12,7 +12,7 @@
     arbiters: 1
     replicas: 3
     cluster:
-      - glusterfs-0
-      - glusterfs-1
-      - glusterfs-2
+      - glusterfs-0.glusterfs.default.svc.cluster.local
+      - glusterfs-1.glusterfs.default.svc.cluster.local
+      - glusterfs-2.glusterfs.default.svc.cluster.local
   run_once: true
