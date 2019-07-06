@@ -1,8 +1,0 @@
-[glusterfs:vars]
-ansible_connection=kubectl
-ansible_kubectl_namespace=default
-
-[glusterfs]
-glusterfs-0
-glusterfs-1
-glusterfs-2

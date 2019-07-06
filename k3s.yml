@@ -3,7 +3,6 @@
   gather_facts: yes
   become: yes
   roles:
-    - { role: setup }
     - { role: download }
 
 - hosts: master

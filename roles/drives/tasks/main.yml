@@ -4,7 +4,7 @@
     path: /mnt/drive
     src: /dev/sda1
     fstype: ext4
-    opts: nofail,x-systemd.device-timeout=1,noatime
+    opts: nofail,x-systemd.device-timeout=1,relatime
     state: mounted
 - name: Create directory for local-path-provisioner
   file:

@@ -1,6 +1,0 @@
----
-- name: Copy over public key
-  authorized_key:
-    user: pi
-    state: present
-    key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
