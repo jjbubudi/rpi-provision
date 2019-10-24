@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 ExecStartPre=-/sbin/modprobe br_netfilter
 ExecStartPre=-/sbin/modprobe overlay
-ExecStart=/usr/local/bin/k3s server --kubelet-arg="address=0.0.0.0" --no-deploy traefik --no-deploy servicelb
+ExecStart=/usr/local/bin/k3s server --no-deploy traefik --no-deploy servicelb
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity
