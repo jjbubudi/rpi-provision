@@ -4,9 +4,11 @@ Documentation=https://k3s.io
 After=network-online.target
 
 [Service]
-ExecStartPre=-/sbin/modprobe br_netfilter
-ExecStartPre=-/sbin/modprobe overlay
-ExecStart=/usr/local/bin/k3s server --no-deploy traefik --no-deploy servicelb
+ExecStart=/usr/local/bin/k3s server \
+  --token {{ k3s_cluster_token }} \
+  --disable-agent \
+  --no-deploy traefik \
+  --no-deploy servicelb
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity
