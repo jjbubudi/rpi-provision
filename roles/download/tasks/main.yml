@@ -1,5 +1,6 @@
 ---
 - name: Download k3s binary x64
+  register: k3s_binary
   get_url:                                                           
       url: https://github.com/rancher/k3s/releases/download/{{ k3s_version | urlencode }}/k3s
       checksum: sha256:https://github.com/rancher/k3s/releases/download/{{ k3s_version }}/sha256sum-amd64.txt
@@ -10,6 +11,7 @@
   when: ( ansible_architecture == "x86_64" )
 
 - name: Download k3s binary arm64
+  register: k3s_binary
   get_url:                                                           
       url: https://github.com/rancher/k3s/releases/download/{{ k3s_version | urlencode }}/k3s-arm64
       checksum: sha256:https://github.com/rancher/k3s/releases/download/{{ k3s_version }}/sha256sum-arm64.txt
@@ -20,6 +22,7 @@
   when: ( ansible_architecture == "aarch64" )
 
 - name: Download k3s binary armhf
+  register: k3s_binary
   get_url:                                                           
       url: https://github.com/rancher/k3s/releases/download/{{ k3s_version | urlencode }}/k3s-armhf
       checksum: sha256:https://github.com/rancher/k3s/releases/download/{{ k3s_version }}/sha256sum-arm.txt

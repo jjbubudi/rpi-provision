@@ -6,9 +6,11 @@ After=network-online.target
 [Service]
 ExecStart=/usr/local/bin/k3s server \
   --token {{ k3s_cluster_token }} \
-  --disable-agent \
+  --kube-apiserver-arg "enable-aggregator-routing=true" \
   --no-deploy traefik \
-  --no-deploy servicelb
+  --no-deploy servicelb \
+  --no-deploy metrics-server \
+  --disable-agent
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity
