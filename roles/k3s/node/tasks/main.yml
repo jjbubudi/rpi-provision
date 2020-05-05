@@ -1,3 +1,9 @@
+- name: Enable iscsid service
+  systemd:
+    name: iscsid
+    state: started
+    enabled: yes
+
 - name: Copy K3s service file
   register: k3s_service
   template:
