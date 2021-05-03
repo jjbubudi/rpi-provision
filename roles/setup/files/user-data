@@ -1,0 +1,20 @@
+#cloud-config
+
+# Auth
+ssh_pwauth: false
+users:
+  - name: pi
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCilQXK756XeOwo0wC5Evm2aRC9UzyqgBXEqvXuaKdabhYNnYqICYf2hGm1rT2ttLclZ6fx7wtp+koGNEqmownhqi9ezGsOF/fHe7bzihyjUi6XdR9gPmdTq7CoavbyJTUbMK8z9wJ0p/jbn9lwoTp0aEBKMFXZ2eJ0WDoJEBQEVoPt9VbS4dWmpJoUeU9wK6FALgs0BKxqqKn8GfLkvZei/e5T/NooBmIQVoE9McAZt4kYGcpJ2m7iQQITkTKDCxJ1S9oKeueLyFk+LZc6cdTSNgfRrllbi6E+juR37lV/JCYxp9ZeItUFbEvOUajwWhTV437yBPLoWYU19Mkv20WEk+Ykv0DAsH35VICOWsd1l6MefV5vvHM3dD9sQzEcnCuL01R4aMOua+Hi/LYqjpJR9SyD/GX2/4tFUhfsoyQ8w3Jh1ALLL2o7biLDHdF+0vOeutICBpHgVdcll1zMyA6ZtG2QsOt1P132KmS5uvI1Y6BlsWA980p7el1siVgyhIM=
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+
+# Packages
+package_update: true
+package_upgrade: false
+packages:
+- avahi-daemon
+
+# Network
+hostname: pimaster
