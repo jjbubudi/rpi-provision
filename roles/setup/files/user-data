@@ -12,9 +12,14 @@ users:
 
 # Packages
 package_update: true
-package_upgrade: false
+package_upgrade: true
 packages:
-- avahi-daemon
+  - avahi-daemon
 
 # Network
 hostname: pimaster
+
+# Scripts
+runcmd:
+  - [ chmod, -x, /etc/update-motd.d/50-landscape-sysinfo ]
+  - [ apt, autoremove, --purge, snapd, -y ]

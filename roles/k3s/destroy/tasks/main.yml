@@ -1,0 +1,26 @@
+- name: Stop and disable k3s service
+  systemd:
+    name: k3s
+    daemon_reload: yes
+    state: stopped
+    enabled: false
+
+- name: Remove k3s service
+  file:
+    state: absent
+    path: "{{ systemd_dir }}/k3s.service"
+
+- name: Remove k3s data dir
+  file:
+    state: absent
+    path: /var/lib/rancher
+
+- name: Remove k3s config dir
+  file:
+    state: absent
+    path: /etc/rancher
+
+- name: Remove k3s binary
+  file:
+    state: absent
+    path: /usr/local/bin/k3s
