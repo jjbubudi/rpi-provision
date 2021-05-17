@@ -6,6 +6,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/local/bin/k3s agent \
   --server https://{{ k3s_master_ip }}:6443 \
+{% if node_taint is defined %}
+  --node-taint {{ node_taint }} \
+{% endif %}
   --token {{ k3s_cluster_token }}
 KillMode=process
 Delegate=yes
@@ -14,6 +17,7 @@ LimitNPROC=infinity
 LimitCORE=infinity
 TasksMax=infinity
 Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

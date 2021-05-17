@@ -7,6 +7,7 @@ After=network-online.target
 ExecStart=/usr/local/bin/k3s server \
   --token {{ k3s_cluster_token }} \
   --node-taint CriticalAddonsOnly=true:NoExecute \
+  --disable-cloud-controller \
   --disable traefik \
   --disable servicelb
 KillMode=process
@@ -16,6 +17,7 @@ LimitNPROC=infinity
 LimitCORE=infinity
 TasksMax=infinity
 Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
